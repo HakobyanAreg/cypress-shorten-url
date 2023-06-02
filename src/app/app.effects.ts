@@ -17,6 +17,7 @@ export class AppEffects {
               const shortenUrls = Object.keys(result)
                 .filter((key: string) => key.startsWith("full_short_link"))
                 .map(item => result[item]);
+              shortenUrls.pop()
               return getShortenUrlSuccess({data: shortenUrls})
             }),
             catchError((error) => of(getShortenUrlError({error: 'Something was wrong'})))
